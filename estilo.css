@@ -1,0 +1,42 @@
+body {
+    margin: 0;
+    display: grid;
+    border: 1px solid;
+
+    font-family: monospace;
+}
+
+nav {
+    background-color: black;
+    color: white;
+}
+
+.menu {
+    /*RESET*/
+    list-style-type: none;
+    margin:  0;
+    padding: 0;
+
+    display: flex;
+    justify-content: space-around;
+
+    font-weight: bold;
+    font-size: 3vmin;
+
+    width: 60vmin;
+    padding: 2vmin;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    
+    background-color: black;
+    color: white;
+
+    padding: 0.5vmin;
+    
+    font-size: 2vmin;
+    text-align: end;
+}
