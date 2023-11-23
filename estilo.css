@@ -57,6 +57,7 @@ footer {
 #bar {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     background-color: black;
     color: white;
     border-bottom: 1px solid black;
@@ -75,4 +76,8 @@ footer {
 
 .close-btn:hover {
     background-color: red;
+}
+
+#nome {
+    margin-left: 5%;
 }
