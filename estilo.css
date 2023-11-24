@@ -1,7 +1,5 @@
 body {
     margin: 0;
-    display: grid;
-    border: 1px solid;
 
     font-family: monospace;
 }
@@ -9,6 +7,10 @@ body {
 nav {
     background-color: black;
     color: white;
+
+    position: fixed;
+    top: 0;
+    width: 100%;
 }
 
 .menu {
@@ -24,7 +26,26 @@ nav {
     font-size: 3vmin;
 
     width: 60vmin;
+}
+
+.item-menu a {
+    display: block;
+
+    text-decoration: none;
+    color: white;
+
     padding: 2vmin;
+}
+
+.item-menu a:hover {
+    background-color: rgb(64, 64, 64);
+}
+
+.tabela {
+    margin: 10px;
+    margin-top: 40px;
+
+    text-wrap: nowrap;
 }
 
 footer {
@@ -39,12 +60,14 @@ footer {
     
     font-size: 2vmin;
     text-align: end;
+
+    box-sizing: border-box;
+    width: 100%;
 }
 
 #popup {
+    display: none;
     background-color: white;
-    width: 200px;
-    height: 200px;
     border: 1px solid;
     position: fixed;
     top: 50%;
