@@ -4,6 +4,7 @@ table, td, th {
     border: 1px solid;
     border-collapse: collapse;
     border-color: black;
+    z-index: 1;
 }
 
 tr:nth-child(even) {
@@ -45,6 +46,7 @@ td {
     width: 48px;
     height: 26px;
     padding: 0;
+    z-index: 0;
 }
 
 .options img {

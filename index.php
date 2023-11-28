@@ -23,29 +23,90 @@
 
     <div id="popup">
         <div id="bar" onmousedown="mousedown(event)" onmouseup="mouseup()">
-            <span id="nome">[Nome]</span>
+            <span id="nomelabel">[Nome]</span>
             <button class="close-btn" onclick="closeWindow()">&times;</button>
         </div>
-        <form action="">
-            <label for="nome">Nome</label>
-            <input type="text" name="nome" id="nome">
+        <form class="formulario" action="">
 
-            <label for="email">E-mail</label>
-            <input type="email" name="email" id="email">
-
-            <label for="telefone">Telefone</label>
-            <input type="tel" name="telefone" id="telefone">
-
-            <label for="idade">Idade</label>
-            <input type="number" name="idade" id="">
-
-            <p>Sexo</p>
-            <input type="radio" name="sexo" id="masculino" value="masculino">
-            <label for="masculino">Masculino</label>
-            <input type="radio" name="sexo" id="" value="feminino">
-            <label for="feminino">Feminino</label>
-
-            <input type="submit" value="Salvar">
+            <div class="input_div">
+                <label for="nome">Nome</label>
+                <input type="text" name="nome" id="nome">
+            </div>
+            
+            <div class="input_div">
+                <label for="email">E-mail</label>
+                <input type="email" name="email" id="email">
+            </div>
+            
+            <div class="input_div">
+                <label for="datadenascimento">Data de nascimento</label>
+                <input type="date" name="datadenascimento" id="datadenascimento">
+            </div>
+            
+            <div class="input_div">
+                <label for="renda">Renda</label>
+                <input type="number" name="renda" id="renda" placeholder="R$">
+            </div>
+            
+            <div class="input_div">
+                <label for="CPF">CPF</label>
+                <input type="number" name="CPF" id="CPF" placeholder="___.___.___-__">
+            </div>
+            
+            <div class="input_div">
+                <label for="CNPJ">CNPJ</label>
+                <input type="number" name="CNPJ" id="CNPJ" placeholder="__.___.___/____-__">
+            </div>
+            
+            <div class="input_div">
+                <label for="rua">Rua</label>
+                <input type="text" name="rua" id="rua">
+            </div>
+            
+            <div class="input_div">
+                <label for="numero">Nº</label>
+                <input type="number" name="numero" id="numero">
+            </div>
+            
+            <div class="input_div">
+                <label for="complemento">Complemento</label>
+                <input type="text" name="complemento" id="complemento">
+            </div>
+            
+            <div class="uf_cidade">
+                <div class="input_div">
+                    <label for="UF">UF</label>
+                    <select name="UF" id="UF">
+                        <option value="GO">GO</option>
+                    </select>
+                </div>
+                
+                <div class="input_div">
+                    <label for="cidade">Cidade</label>
+                    <select name="cidade" id="cidade">
+                        <option value="anapolis">Anápolis</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="input_div">
+                <label for="CEP">CEP</label>
+                <input type="text" name="CEP" id="CEP" placeholder="_____-___">
+            </div>
+            
+            <div class="input_div">
+                <label for="telefoneresidencial">Telefone residencial</label>
+                <input type="tel" name="telefoneresidencial" id="telefoneresidencial" placeholder="(__)____-____">
+            </div>
+            
+            <div class="input_div">
+                <label for="telefonecelular">Telefone celular</label>
+                <input type="tel" name="telefonecelular" id="telefonecelular" placeholder="(__)_____-____">
+            </div>
+            
+            <div class="input_div" class="enviar-button">
+                <input class="salvar" type="submit" value="Salvar">
+            </div>
         </form>
     </div>
 
