@@ -21,6 +21,9 @@
         </ul>
     </nav>
 
+    <div id="popups">
+    </div>
+
     <div id="popup" style="display: none;">
         <div id="bar" onmousedown="mousedown(event)" onmouseup="mouseup()">
             <span id="nomelabel">[Nome]</span>
@@ -221,6 +224,8 @@
         function mouseup() {
             document.removeEventListener("mousemove", move);
         }
+
+        // Inserir popups
     </script>
 </body>
 </html>
