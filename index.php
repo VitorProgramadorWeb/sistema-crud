@@ -6,27 +6,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="estilo.css" type="text/css">
-    <link rel="stylesheet" href="tabela.css" type="text/css">
-    <link rel="stylesheet" href="popup.css" type="text/css">
+    <link rel="stylesheet" href="estilos/estilo.css" type="text/css">
+    <link rel="stylesheet" href="estilos/tabela.css" type="text/css">
+    <link rel="stylesheet" href="estilos/popup.css" type="text/css">
 </head>
 <body>
     
     <nav>
         <ul class="menu">
-            <li class="item-menu"><a href="" onclick="showWindow()">Inserir</a></li>
-            <li class="item-menu"><a href="">Listar</a></li>
-            <li class="item-menu"><a href="">Alterar</a></li>
-            <li class="item-menu"><a href="">Deletar</a></li>
+            <li class="item-menu"><a href="#" onclick="showWindow()">Inserir</a></li>
+            <li class="item-menu"><a href="#">Listar</a></li>
+            <li class="item-menu"><a href="#">Alterar</a></li>
+            <li class="item-menu"><a href="#">Deletar</a></li>
         </ul>
     </nav>
 
-    <div id="popup">
+    <div id="popup" style="display: none;">
         <div id="bar" onmousedown="mousedown(event)" onmouseup="mouseup()">
             <span id="nomelabel">[Nome]</span>
             <button class="close-btn" onclick="closeWindow()">&times;</button>
         </div>
-        <form class="formulario" action="">
+        <form class="formulario" action="inserir.php" method="post">
 
             <div class="input_div">
                 <label for="nome">Nome</label>
@@ -39,23 +39,23 @@
             </div>
             
             <div class="input_div">
-                <label for="datadenascimento">Data de nascimento</label>
-                <input type="date" name="datadenascimento" id="datadenascimento">
+                <label for="nascimento">Data de nascimento</label>
+                <input type="date" name="nascimento" id="nascimento">
             </div>
             
             <div class="input_div">
                 <label for="renda">Renda</label>
-                <input type="number" name="renda" id="renda" placeholder="R$">
+                <input type="number" step="0.01" name="renda" id="renda" placeholder="R$">
             </div>
             
             <div class="input_div">
-                <label for="CPF">CPF</label>
-                <input type="number" name="CPF" id="CPF" placeholder="___.___.___-__">
+                <label for="cpf">CPF</label>
+                <input type="text" name="cpf" id="cpf" placeholder="___.___.___-__">
             </div>
             
             <div class="input_div">
-                <label for="CNPJ">CNPJ</label>
-                <input type="number" name="CNPJ" id="CNPJ" placeholder="__.___.___/____-__">
+                <label for="cnpj">CNPJ</label>
+                <input type="text" name="cnpj" id="cnpj" placeholder="__.___.___/____-__">
             </div>
             
             <div class="input_div">
@@ -75,8 +75,8 @@
             
             <div class="uf_cidade">
                 <div class="input_div">
-                    <label for="UF">UF</label>
-                    <select name="UF" id="UF">
+                    <label for="uf">UF</label>
+                    <select name="uf" id="uf">
                         <option value="GO">GO</option>
                     </select>
                 </div>
@@ -90,18 +90,18 @@
             </div>
             
             <div class="input_div">
-                <label for="CEP">CEP</label>
-                <input type="text" name="CEP" id="CEP" placeholder="_____-___">
+                <label for="cep">CEP</label>
+                <input type="text" name="cep" id="cep" placeholder="_____-___">
             </div>
             
             <div class="input_div">
-                <label for="telefoneresidencial">Telefone residencial</label>
-                <input type="tel" name="telefoneresidencial" id="telefoneresidencial" placeholder="(__)____-____">
+                <label for="telefone_residencial">Telefone residencial</label>
+                <input type="tel" name="telefone_residencial" id="telefone_residencial" placeholder="(__)____-____">
             </div>
             
             <div class="input_div">
-                <label for="telefonecelular">Telefone celular</label>
-                <input type="tel" name="telefonecelular" id="telefonecelular" placeholder="(__)_____-____">
+                <label for="telefone_celular">Telefone celular</label>
+                <input type="tel" name="telefone_celular" id="telefone_celular" placeholder="(__)_____-____">
             </div>
             
             <div class="input_div" class="enviar-button">
@@ -112,69 +112,73 @@
 
     <div class="tabela">
         <table>
-            <tr>
-                <th>Nome</th>
-                <th>Idade</th>
-                <th>Sexo</th>
-                <th>E-mail</th>
-                <th>Telefone</th>
-                <th></th>
-            </tr>
-            <tr>
-                <td>Exemplo Da Silva Nunes</td>
-                <td>22</td>
-                <td>Masculino</td>
-                <td>exemplo@email.com</td>
-                <td>(62)99999-9999</td>
-                <td class="options">
-                    <a href=""><img src="edit.png" alt="editar"></a>
-                    <a href=""><img src="delete.png" alt="excluir"></a>
-                </td>
-            </tr>
-            <tr>
-                <td>Exemplo Da Silva Nunes</td>
-                <td>22</td>
-                <td>Masculino</td>
-                <td>exemplo@email.com</td>
-                <td>(62)99999-9999</td>
-                <td class="options">
-                    <a href=""><img src="edit.png" alt="editar"></a>
-                    <a href=""><img src="delete.png" alt="excluir"></a>
-                </td>
-            </tr>
-            <tr>
-                <td>Exemplo Da Silva Nunes</td>
-                <td>22</td>
-                <td>Masculino</td>
-                <td>exemplo@email.com</td>
-                <td>(62)99999-9999</td>
-                <td class="options">
-                    <a href=""><img src="edit.png" alt="editar"></a>
-                    <a href=""><img src="delete.png" alt="excluir"></a>
-                </td>
-            </tr>
-            <tr>
-                <td>Exemplo Da Silva Nunes</td>
-                <td>22</td>
-                <td>Masculino</td>
-                <td>exemplo@email.com</td>
-                <td>(62)99999-9999</td>
-                <td class="options">
-                    <a href=""><img src="edit.png" alt="editar"></a>
-                    <a href=""><img src="delete.png" alt="excluir"></a>
-                </td>
-            </tr>
-            <tr>
-                <td>Exemplo Da Silva Nunes</td>
-                <td>22</td>
-                <td>Masculino</td>
-                <td>exemplo@email.com</td>
-                <td>(62)99999-9999</td>
-                <td class="options">
-                    <a href=""><img src="edit.png" alt="editar"></a>
-                    <a href=""><img src="delete.png" alt="excluir"></a>
-                </td>
-            </tr>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Idade</th>
+                    <th>Sexo</th>
+                    <th>E-mail</th>
+                    <th>Telefone</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Exemplo Da Silva Nunes</td>
+                    <td>22</td>
+                    <td>Masculino</td>
+                    <td>exemplo@email.com</td>
+                    <td>(62)99999-9999</td>
+                    <td class="options">
+                        <a href="#"><img src="imagens/edit.png" alt="editar"></a>
+                        <a href="#"><img src="imagens/delete.png" alt="excluir"></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Exemplo Da Silva Nunes</td>
+                    <td>22</td>
+                    <td>Masculino</td>
+                    <td>exemplo@email.com</td>
+                    <td>(62)99999-9999</td>
+                    <td class="options">
+                        <a href="#"><img src="imagens/edit.png" alt="editar"></a>
+                        <a href="#"><img src="imagens/delete.png" alt="excluir"></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Exemplo Da Silva Nunes</td>
+                    <td>22</td>
+                    <td>Masculino</td>
+                    <td>exemplo@email.com</td>
+                    <td>(62)99999-9999</td>
+                    <td class="options">
+                        <a href="#"><img src="imagens/edit.png" alt="editar"></a>
+                        <a href="#"><img src="imagens/delete.png" alt="excluir"></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Exemplo Da Silva Nunes</td>
+                    <td>22</td>
+                    <td>Masculino</td>
+                    <td>exemplo@email.com</td>
+                    <td>(62)99999-9999</td>
+                    <td class="options">
+                        <a href="#"><img src="imagens/edit.png" alt="editar"></a>
+                        <a href="#"><img src="imagens/delete.png" alt="excluir"></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Exemplo Da Silva Nunes</td>
+                    <td>22</td>
+                    <td>Masculino</td>
+                    <td>exemplo@email.com</td>
+                    <td>(62)99999-9999</td>
+                    <td class="options">
+                        <a href="#"><img src="imagens/edit.png" alt="editar"></a>
+                        <a href="#"><img src="imagens/delete.png" alt="excluir"></a>
+                    </td>
+                </tr>
+            </tbody>
         </table>
     </div>
 
@@ -190,7 +194,7 @@
 
         // POPUP window
         function showWindow() {
-            popupElement.style.display = "block";
+            popupElement.style.display = "";
         }
         function closeWindow() {
             popupElement.style.display = "none";
