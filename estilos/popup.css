@@ -3,9 +3,9 @@
     top: 50%;
     left: 50%;
 
-    border: 1px solid;
+    border: 1px solid rgb(64, 64, 64);
     background-color: white;
-    box-shadow: 8px 8px rgba(0, 0, 0, 0.5);
+    box-shadow: 5px 5px rgba(0, 0, 0, 0.5);
     width: max-content;
 
     transform: translate(-50%, -50%);
@@ -24,14 +24,14 @@
     justify-content: space-between;
     align-items: center;
 
-    background-color: black;
+    background-color: rgb(64, 64, 64);
     color: white;
 
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid rgb(64, 64, 64);
 }
 
 .close-btn {
-    background-color: black;
+    background-color: rgb(64, 64, 64);
     color: white;
 
     border: 0;
@@ -88,13 +88,13 @@
 }
 
 .formulario .salvar {
-    background-color: black;
+    background-color: rgb(64, 64, 64);
     border: 0;
     color: white;
     cursor: pointer;
     height: 100%;
 }
 
-.formulario .salvar:active {
-    background-color: rgb(64, 64, 64);
+.formulario .salvar:hover {
+    background-color: rgba(0, 0, 0, 0.5)
 }
