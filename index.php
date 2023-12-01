@@ -139,27 +139,6 @@
                 </tr>
             </thead>
             <tbody id="tbody">
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td class="options">
-                        <button><img src="imagens/edit.png" alt="editar"></button>
-                        <button><img src="imagens/delete.png" alt="excluir"></button>
-                    </td>
-                </tr>
             </tbody>
         </table>
     </div>
@@ -177,8 +156,6 @@
             var xmlhttp = new XMLHttpRequest();
             xmlhttp.onload = function() {
                 var tabela = JSON.parse(this.response);
-                
-                document.getElementById("teste").append(tabela);
 
                 // Inserirndo os elementos na tabela
                 for (var linha = 0; linha < tabela.length; linha++) {
@@ -190,6 +167,25 @@
                         row.append(dado);
                     }
 
+                    // Options
+                    var options = document.createElement("td");
+                    options.setAttribute("class", "options");
+
+                    var buttonEdit = document.createElement("button");
+                    var imgEdit = document.createElement("img");
+                    imgEdit.setAttribute("src", "imagens/edit.png");
+                    imgEdit.setAttribute("alt", "editar");
+                    buttonEdit.append(imgEdit);
+                    
+                    var buttonDelete = document.createElement("button");
+                    var imgDelete = document.createElement("img");
+                    imgDelete.setAttribute("src", "imagens/delete.png");
+                    imgDelete.setAttribute("alt", "excluir");
+                    buttonDelete.append(imgDelete);
+
+                    options.append(buttonEdit);
+                    options.append(buttonDelete);
+                    row.append(options);
 
                     document.getElementById("tbody").append(row);
                 }
