@@ -183,10 +183,11 @@
                 // Inserirndo os elementos na tabela
                 for (var linha = 0; linha < tabela.length; linha++) {
                     var row = document.createElement("tr");
-                    for (var data = 0; data < table[linha].length; data++) {
+                    for (var data = 0; data < tabela[linha].length; data++) {
                         var dado = document.createElement("td");
                         
-                        data.innerText = tabela[linha][data];
+                        dado.innerText = tabela[linha][data];
+                        row.append(dado);
                     }
 
 
