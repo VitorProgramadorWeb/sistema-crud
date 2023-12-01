@@ -134,8 +134,8 @@
                     <td>exemplo@email.com</td>
                     <td>(62)99999-9999</td>
                     <td class="options">
-                        <a href="#"><img src="imagens/edit.png" alt="editar"></a>
-                        <a href="#"><img src="imagens/delete.png" alt="excluir"></a>
+                        <button><img src="imagens/edit.png" alt="editar"></button>
+                        <button><img src="imagens/delete.png" alt="excluir"></button>
                     </td>
                 </tr>
                 <tr>
@@ -145,8 +145,8 @@
                     <td>exemplo@email.com</td>
                     <td>(62)99999-9999</td>
                     <td class="options">
-                        <a href="#"><img src="imagens/edit.png" alt="editar"></a>
-                        <a href="#"><img src="imagens/delete.png" alt="excluir"></a>
+                        <button><img src="imagens/edit.png" alt="editar"></button>
+                        <button><img src="imagens/delete.png" alt="excluir"></button>
                     </td>
                 </tr>
                 <tr>
@@ -156,8 +156,8 @@
                     <td>exemplo@email.com</td>
                     <td>(62)99999-9999</td>
                     <td class="options">
-                        <a href="#"><img src="imagens/edit.png" alt="editar"></a>
-                        <a href="#"><img src="imagens/delete.png" alt="excluir"></a>
+                        <button><img src="imagens/edit.png" alt="editar"></button>
+                        <button><img src="imagens/delete.png" alt="excluir"></button>
                     </td>
                 </tr>
                 <tr>
@@ -167,8 +167,8 @@
                     <td>exemplo@email.com</td>
                     <td>(62)99999-9999</td>
                     <td class="options">
-                        <a href="#"><img src="imagens/edit.png" alt="editar"></a>
-                        <a href="#"><img src="imagens/delete.png" alt="excluir"></a>
+                        <button><img src="imagens/edit.png" alt="editar"></button>
+                        <button><img src="imagens/delete.png" alt="excluir"></button>
                     </td>
                 </tr>
                 <tr>
@@ -178,8 +178,8 @@
                     <td>exemplo@email.com</td>
                     <td>(62)99999-9999</td>
                     <td class="options">
-                        <a href="#"><img src="imagens/edit.png" alt="editar"></a>
-                        <a href="#"><img src="imagens/delete.png" alt="excluir"></a>
+                        <button><img src="imagens/edit.png" alt="editar"></button>
+                        <button><img src="imagens/delete.png" alt="excluir"></button>
                     </td>
                 </tr>
             </tbody>

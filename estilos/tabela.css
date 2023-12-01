@@ -54,6 +54,19 @@ td {
     height: 16px;
 }
 
-.options a {
+.options button {
+    cursor: pointer;
+    background-color: rgb(64, 64, 64);
+
+    width: 16px;
     height: 16px;
+
+    border: none;
+
+    margin: 0;
+    padding: 0;
+}
+
+.options button:hover img{
+    filter: invert(30%);
 }
