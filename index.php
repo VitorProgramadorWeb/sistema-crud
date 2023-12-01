@@ -9,21 +9,22 @@
     <link rel="stylesheet" href="estilos/estilo.css" type="text/css">
     <link rel="stylesheet" href="estilos/tabela.css" type="text/css">
     <link rel="stylesheet" href="estilos/popup.css" type="text/css">
-    <script src="jquery/jquery-3.7.1.min.js"></script>
+    <script src="javascript/jquery-3.7.1.min.js"></script>
 </head>
-<body>
+<body onload="carregarTabela()">
     
+    <!-- Barra de navegação -->
     <nav>
         <ul class="menu">
             <li class="item-menu"><button onclick="showWindow()">Inserir</button></li>
-            <li class="item-menu"><button onclick="addPopup()">Listar</button></li>
-            <li class="item-menu"><button>Alterar</button></li>
+            <li class="item-menu"><button onclick="carregarTabela()">Listar</button></li>
+            <li class="item-menu"><button onclick="addPopup()">Alterar</button></li>
             <li class="item-menu"><button>Deletar</button></li>
         </ul>
     </nav>
 
-    <div id="popups">
-    </div>
+    <!-- Popups -->
+    <div id="popups"></div>
 
     <div class="popup" style="display: none;">
         <div class="bar" onmousedown="mousedown(event)" onmouseup="mouseup()">
@@ -114,69 +115,46 @@
         </form>
     </div>
 
+    <!-- Tabela -->
     <div class="tabela">
         <table>
             <thead>
                 <tr>
                     <th>Nome</th>
-                    <th>Idade</th>
-                    <th>Sexo</th>
                     <th>E-mail</th>
-                    <th>Telefone</th>
-                    <th></th>
+                    <th>Nascimento</th>
+                    <th>Renda</th>
+                    <th>CPF</th>
+                    <th>CNPJ</th>
+                    <th>Rua</th>
+                    <th>Nº</th>
+                    <th>Complemento</th>
+                    <th>UF</th>
+                    <th>Cidade</th>
+                    <th>CEP</th>
+                    <th>Telefone residencial</th>
+                    <th>Telefone celular</th>
+                    <th>CEP</th>
+                    <th></th> <!-- options -->
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="tbody">
                 <tr>
-                    <td>Exemplo Da Silva Nunes</td>
-                    <td>22</td>
-                    <td>Masculino</td>
-                    <td>exemplo@email.com</td>
-                    <td>(62)99999-9999</td>
-                    <td class="options">
-                        <button><img src="imagens/edit.png" alt="editar"></button>
-                        <button><img src="imagens/delete.png" alt="excluir"></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Exemplo Da Silva Nunes</td>
-                    <td>22</td>
-                    <td>Masculino</td>
-                    <td>exemplo@email.com</td>
-                    <td>(62)99999-9999</td>
-                    <td class="options">
-                        <button><img src="imagens/edit.png" alt="editar"></button>
-                        <button><img src="imagens/delete.png" alt="excluir"></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Exemplo Da Silva Nunes</td>
-                    <td>22</td>
-                    <td>Masculino</td>
-                    <td>exemplo@email.com</td>
-                    <td>(62)99999-9999</td>
-                    <td class="options">
-                        <button><img src="imagens/edit.png" alt="editar"></button>
-                        <button><img src="imagens/delete.png" alt="excluir"></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Exemplo Da Silva Nunes</td>
-                    <td>22</td>
-                    <td>Masculino</td>
-                    <td>exemplo@email.com</td>
-                    <td>(62)99999-9999</td>
-                    <td class="options">
-                        <button><img src="imagens/edit.png" alt="editar"></button>
-                        <button><img src="imagens/delete.png" alt="excluir"></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Exemplo Da Silva Nunes</td>
-                    <td>22</td>
-                    <td>Masculino</td>
-                    <td>exemplo@email.com</td>
-                    <td>(62)99999-9999</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                     <td class="options">
                         <button><img src="imagens/edit.png" alt="editar"></button>
                         <button><img src="imagens/delete.png" alt="excluir"></button>
@@ -186,81 +164,41 @@
         </table>
     </div>
 
+    <div id="teste"></div>
+
+    <!-- Rodapé -->
     <footer>
         Desenvolvido por: Vítor
     </footer>
 
     <!-- JavaScript -->
     <script>
-        var popupElement = document.getElementsByClassName("popup")[0];
-        var xPopup;
-        var yPopup;
+        function carregarTabela() {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onload = function() {
+                var tabela = JSON.parse(this.response);
+                
+                document.getElementById("teste").append(tabela);
 
-        // POPUP window
-        function showWindow() {
-            popupElement.style.display = "";
+                // Inserirndo os elementos na tabela
+                for (var linha = 0; linha < tabela.length; linha++) {
+                    var row = document.createElement("tr");
+                    for (var data = 0; data < table[linha].length; data++) {
+                        var dado = document.createElement("td");
+                        
+                        data.innerText = tabela[linha][data];
+                    }
+
+
+                    document.getElementById("tbody").append(row);
+                }
+
+            };
+            xmlhttp.open("GET", "consulta.php");
+            xmlhttp.send();
         }
-        function closeWindow() {
-            popupElement.style.display = "none";
-            popupElement.style.top = "50%";
-            popupElement.style.left = "50%";
-        }
-
-        function mousedown(e) {
-            document.addEventListener("mousemove", move);
-
-            var popupLeft = window.getComputedStyle(popupElement).getPropertyValue("left");
-            var popupTop = window.getComputedStyle(popupElement).getPropertyValue("top");
-            
-            xPopup = e.pageX - Number(popupLeft.substring(0, popupLeft.length-2));
-            
-            yPopup = e.pageY - Number(popupTop.substring(0, popupTop.length-2));
-        }
-        function move(e) {
-            
-            popupElement.style.top = (e.pageY - yPopup) + "px";
-            popupElement.style.left = (e.pageX - xPopup) + "px";
-
-        }
-        function mouseup() {
-            document.removeEventListener("mousemove", move);
-        }
-
-        // Inserir popups
-        function addPopup() {
-            var popups = document.getElementById("popups");
-
-            //Popup
-            var popup = document.createElement("div");
-            popup.setAttribute("class", "popup");
-            //Bar
-            var bar = document.createElement("div");
-            bar.setAttribute("class", "bar");
-            bar.setAttribute("onmousedown", "mousedown(event)");
-            bar.setAttribute("onmouseup", "mouseup()");
-            //Close button
-            var closeButton = document.createElement("button");
-            closeButton.setAttribute("class", "close-btn");
-            closeButton.setAttribute("onclick", "closeWindow()");
-            closeButton.innerHTML = "&times;";
-
-            bar.append(closeButton);
-            popup.append(bar);
-
-            /*
-            <div class="bar" onmousedown="mousedown(event)" onmouseup="mouseup()">
-                <span id="nomelabel">[Nome]</span>
-                <button class="close-btn" onclick="closeWindow()">&times;</button>
-            </div>
-            */
-
-            popup.style.width = "200px";
-            popup.style.height = "200px";
-
-            popups.append(popup);
-            popupElement = document.getElementsByClassName("popup")[0];
-        }
-
     </script>
+    <script src="javascript/popupActions.js"></script>
+    <script src="javascript/addPopup.js"></script>
 </body>
 </html>

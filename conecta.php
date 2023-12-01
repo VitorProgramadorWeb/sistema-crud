@@ -12,5 +12,4 @@ $conn = new mysqli($servidor, $usuario, $senha, $bancodedados);
 if ($conn->connect_error) {
     die("Conexão falhou: " . $conn->connect_error);
 }
-echo "Conectado com sucesso<br>";
 ?>
