@@ -1,4 +1,4 @@
-#popup {
+.popup {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -19,7 +19,7 @@
 
 
 /* Barra superior */
-#bar {
+.bar {
     display: flex;
     justify-content: space-between;
     align-items: center;

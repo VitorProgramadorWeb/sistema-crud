@@ -16,7 +16,7 @@
     <nav>
         <ul class="menu">
             <li class="item-menu"><button onclick="showWindow()">Inserir</button></li>
-            <li class="item-menu"><button>Listar</button></li>
+            <li class="item-menu"><button onclick="addPopup()">Listar</button></li>
             <li class="item-menu"><button>Alterar</button></li>
             <li class="item-menu"><button>Deletar</button></li>
         </ul>
@@ -25,8 +25,8 @@
     <div id="popups">
     </div>
 
-    <div id="popup" style="display: none;">
-        <div id="bar" onmousedown="mousedown(event)" onmouseup="mouseup()">
+    <div class="popup" style="display: none;">
+        <div class="bar" onmousedown="mousedown(event)" onmouseup="mouseup()">
             <span id="nomelabel">[Nome]</span>
             <button class="close-btn" onclick="closeWindow()">&times;</button>
         </div>
@@ -192,7 +192,7 @@
 
     <!-- JavaScript -->
     <script>
-        var popupElement = document.getElementById("popup");
+        var popupElement = document.getElementsByClassName("popup")[0];
         var xPopup;
         var yPopup;
 
@@ -228,8 +228,37 @@
 
         // Inserir popups
         function addPopup() {
-            
-            
+            var popups = document.getElementById("popups");
+
+            //Popup
+            var popup = document.createElement("div");
+            popup.setAttribute("class", "popup");
+            //Bar
+            var bar = document.createElement("div");
+            bar.setAttribute("class", "bar");
+            bar.setAttribute("onmousedown", "mousedown(event)");
+            bar.setAttribute("onmouseup", "mouseup()");
+            //Close button
+            var closeButton = document.createElement("button");
+            closeButton.setAttribute("class", "close-btn");
+            closeButton.setAttribute("onclick", "closeWindow()");
+            closeButton.innerHTML = "&times;";
+
+            bar.append(closeButton);
+            popup.append(bar);
+
+            /*
+            <div class="bar" onmousedown="mousedown(event)" onmouseup="mouseup()">
+                <span id="nomelabel">[Nome]</span>
+                <button class="close-btn" onclick="closeWindow()">&times;</button>
+            </div>
+            */
+
+            popup.style.width = "200px";
+            popup.style.height = "200px";
+
+            popups.append(popup);
+            popupElement = document.getElementsByClassName("popup")[0];
         }
 
     </script>
