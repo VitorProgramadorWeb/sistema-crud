@@ -15,10 +15,10 @@
     
     <nav>
         <ul class="menu">
-            <li class="item-menu"><a href="#" onclick="showWindow()">Inserir</a></li>
-            <li class="item-menu"><a href="#" onclick="">Listar</a></li>
-            <li class="item-menu"><a href="#">Alterar</a></li>
-            <li class="item-menu"><a href="#">Deletar</a></li>
+            <li class="item-menu"><button onclick="showWindow()">Inserir</button></li>
+            <li class="item-menu"><button>Listar</button></li>
+            <li class="item-menu"><button>Alterar</button></li>
+            <li class="item-menu"><button>Deletar</button></li>
         </ul>
     </nav>
 

@@ -23,22 +23,24 @@ nav {
     display: flex;
     justify-content: space-around;
     
-    font-weight: bold;
-    font-size: 3vmin;
-
     width: 60vmin;
 }
 
-.item-menu a {
-    display: block;
-
-    text-decoration: none;
+.item-menu button {
+    background-color: black;
     color: white;
 
+    border: none;
+    
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 3vmin;
+    
     padding: 2vmin;
 }
 
-.item-menu a:hover {
+.item-menu button:hover {
+    cursor: pointer;
     background-color: rgb(64, 64, 64);
 }
 
