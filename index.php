@@ -9,13 +9,14 @@
     <link rel="stylesheet" href="estilos/estilo.css" type="text/css">
     <link rel="stylesheet" href="estilos/tabela.css" type="text/css">
     <link rel="stylesheet" href="estilos/popup.css" type="text/css">
+    <script src="jquery/jquery-3.7.1.min.js"></script>
 </head>
 <body>
     
     <nav>
         <ul class="menu">
             <li class="item-menu"><a href="#" onclick="showWindow()">Inserir</a></li>
-            <li class="item-menu"><a href="#">Listar</a></li>
+            <li class="item-menu"><a href="#" onclick="">Listar</a></li>
             <li class="item-menu"><a href="#">Alterar</a></li>
             <li class="item-menu"><a href="#">Deletar</a></li>
         </ul>
@@ -226,6 +227,11 @@
         }
 
         // Inserir popups
+        function addPopup() {
+            
+            
+        }
+
     </script>
 </body>
 </html>
