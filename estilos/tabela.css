@@ -66,5 +66,6 @@ td {
 }
 
 .options button:hover img{
-    filter: invert(30%);
+    /* filter: invert(30%); */
+    filter: invert(17%) sepia(65%) saturate(7232%) hue-rotate(357deg) brightness(98%) contrast(119%);
 }

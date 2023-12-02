@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <title>Sistema CRUD</title>
 
@@ -10,9 +11,12 @@
     <link rel="stylesheet" href="estilos/tabela.css" type="text/css">
     <link rel="stylesheet" href="estilos/popup.css" type="text/css">
     <script src="javascript/jquery-3.7.1.min.js"></script>
+    <script src="javascript/popupActions.js"></script>
+    <script src="javascript/addPopup.js"></script>
+    <script src="javascript/table.js"></script>
 </head>
+
 <body onload="carregarTabela()">
-    
     <!-- Menu -->
     <nav>
         <ul class="menu">
@@ -25,7 +29,7 @@
     <div id="popups"></div>
 
     <!-- Tabela -->
-    <div class="tabela">
+    <div id="tabela">
         <table>
             <thead>
                 <tr>
@@ -54,53 +58,6 @@
 
     <!-- Rodapé -->
     <footer>Desenvolvido por: Vítor</footer>
-
-    <!-- JavaScript -->
-    <script>
-        function carregarTabela() {
-            var xmlhttp = new XMLHttpRequest();
-            xmlhttp.onload = function() {
-                var tabela = JSON.parse(this.response);
-
-                // Inserirndo os elementos na tabela
-                for (var linha = 0; linha < tabela.length; linha++) {
-                    var row = document.createElement("tr");
-                    for (var data = 0; data < tabela[linha].length; data++) {
-                        var dado = document.createElement("td");
-                        
-                        dado.innerText = tabela[linha][data];
-                        row.append(dado);
-                    }
-
-                    // Options
-                    var options = document.createElement("td");
-                    options.setAttribute("class", "options");
-
-                    var buttonEdit = document.createElement("button");
-                    var imgEdit = document.createElement("img");
-                    imgEdit.setAttribute("src", "imagens/edit.png");
-                    imgEdit.setAttribute("alt", "editar");
-                    buttonEdit.append(imgEdit);
-                    
-                    var buttonDelete = document.createElement("button");
-                    var imgDelete = document.createElement("img");
-                    imgDelete.setAttribute("src", "imagens/delete.png");
-                    imgDelete.setAttribute("alt", "excluir");
-                    buttonDelete.append(imgDelete);
-
-                    options.append(buttonEdit);
-                    options.append(buttonDelete);
-                    row.append(options);
-
-                    document.getElementById("tbody").append(row);
-                }
-
-            };
-            xmlhttp.open("GET", "consulta.php");
-            xmlhttp.send();
-        }
-    </script>
-    <script src="javascript/popupActions.js"></script>
-    <script src="javascript/addPopup.js"></script>
 </body>
+
 </html>

@@ -21,9 +21,7 @@ nav {
     padding: 0;
     
     display: flex;
-    justify-content: space-around;
-    
-    width: 60vmin;
+    justify-content: space-between;
 }
 
 .item-menu button {
@@ -40,12 +38,13 @@ nav {
     padding: 2vmin;
 }
 
+
 .item-menu button:hover {
     cursor: pointer;
     background-color: rgb(64, 64, 64);
 }
 
-.tabela {
+#tabela {
     margin: 2vmin;
     margin-top: 10vmin;
 
