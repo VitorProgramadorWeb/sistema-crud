@@ -21,6 +21,7 @@ function addPopup() {
 
     // Name bar
     var nameBar = document.createElement("span");
+    nameBar.innerText = "Exemplo";
     
     bar.append(nameBar);
     bar.append(closeButton);
@@ -34,48 +35,99 @@ function addPopup() {
     
     // ----- Campos ----- //
     // Nome
-    var campoNome = document.createElement("div");
-    campoNome.setAttribute("class", "campo");
-    var labelNome = document.createElement("label");
-    labelNome.setAttribute("for", "nome");
-    var inputNome = document.createElement("input");
-    inputNome.setAttribute("type", "text");
-    inputNome.setAttribute("name", "nome");
-    inputNome.setAttribute("id", "nome");
-    campoNome.append(labelNome);
-    campoNome.append(inputNome);
-
-    function criarCampo() {
-        var campo = "";
-    }
+    var campoNome = criarCampo("Nome", "nome", "text");
 
     // Email
-    var campoEmail = document.createElement("div");
-    campoEmail.setAttribute("class", "campo");
-    var labelEmail = document.createElement("label");
-    labelEmail.setAttribute("for", "email");
-    var inputEmail = document.createElement("input");
-    inputEmail.setAttribute("type", "email");
-    inputEmail.setAttribute("name", "email");
-    inputEmail.setAttribute("id", "email");
+    var campoEmail = criarCampo("E-mail", "email", "email");
 
     // Nascimento
-    var campoNascimento = document.createElement("div");
-    campoNascimento.setAttribute("class", "campo");
-    var labelNascimento = document.createElement("label");
-    labelNascimento.setAttribute("for", "email");
-    var inputNascimento = document.createElement("input");
-    inputNascimento.setAttribute("type", "date");
-    inputNascimento.setAttribute("name", "email");
-    inputNascimento.setAttribute("id", "email");
+    var campoNascimento = criarCampo("Nascimento", "nascimento", "date");
     
-    /* ----------------------------- APPENDS ----------------------------- */
-    popup.append(bar);
+    // Renda
+    var campoRenda = criarCampo("Renda", "renda", "number");
+    // step="0.01"
+    // placeholder="R$"
 
-    popup.style.width = "200px";
-    popup.style.height = "200px";
+    // CPF
+    var campoCpf = criarCampo("CPF", "cpf", "text");
+    // placeholder="___.___.___-__"
+    
+    // CNPJ
+    var campoCnpj = criarCampo("CNPJ", "cnpj", "text");
+    // placeholder="__.___.___/____-__"
+
+    // Rua
+    var campoRua = criarCampo("Rua", "rua", "text");
+
+    // Nº
+    var campoNumero = criarCampo("Nº", "numero", "number");
+
+    // Complemento
+    var campoComplemento = criarCampo("Complemento", "complemento", "text");
+
+    // UF e Cidade [Campos tipo SELECT (e dentros de outra div)]
+    // var campoUf = criarCampo();
+    // var campoCidade = criarCampo();
+
+    // CEP
+    var campoCep = criarCampo("CEP", "cep", "text");
+    // placeholder="_____-___"
+
+    // Telefone residencial
+    var campoTelefoneResidencial = criarCampo("Telefone residencial", "telefoneResidencial", "tel");
+    // placeholder="(__)____-____"
+
+    // Telefone celular
+    var campoTelefoneCelular = criarCampo("Telefone celular", "telefoneCelular", "tel");
+    // placeholder="(__)_____-____"
+
+    // Botão: SALVAR
+    // var botaoSalvar = criarCampo();
+
+    form.append(campoNome);
+    form.append(campoEmail);
+    form.append(campoNascimento);
+    form.append(campoRenda);
+    form.append(campoCpf);
+    form.append(campoCnpj);
+    form.append(campoRua);
+    form.append(campoNumero);
+    form.append(campoComplemento);
+    // form.append(campoUf);
+    // form.append(campoCidade);
+    form.append(campoCep);
+    form.append(campoTelefoneResidencial);
+    form.append(campoTelefoneCelular);
+    // form.append(botaoSalvar);
+    
+
+
+    popup.append(bar);
+    popup.append(form);
 
     popups.append(popup);
-    popupElement = document.getElementsByClassName("popup")[0];
+    popupElement = document.getElementsByClassName("popup")[0]; // Para mover o popup com o mouse
     
+}
+
+function criarCampo(labelText, inputID, inputType) {
+    // Campo
+    var campo = document.createElement("div");
+    campo.setAttribute("class", "campo");
+
+    // Label
+    var label = document.createElement("label");
+    label.setAttribute("for", inputID);
+    label.innerText = labelText;
+
+    // Input
+    var input = document.createElement("input");
+    input.setAttribute("type", inputType);
+    input.setAttribute("name", inputID);
+    input.setAttribute("id", inputID);
+    //input.setAttribute("placeholder", "");
+
+    campo.append(label);
+    campo.append(input);
+    return campo;
 }
