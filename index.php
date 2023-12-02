@@ -16,10 +16,8 @@
     <!-- Menu -->
     <nav>
         <ul class="menu">
-            <li class="item-menu"><button onclick="showWindow()">Inserir</button></li>
-            <li class="item-menu"><button onclick="carregarTabela()">Listar</button></li>
-            <li class="item-menu"><button onclick="addPopup()">Alterar</button></li>
-            <li class="item-menu"><button>Deletar</button></li>
+            <li class="item-menu"><button onclick="criarNovo()">Criar novo</button></li>
+            <li class="item-menu"><button onclick="configuracoes()">Configurações</button></li>
         </ul>
     </nav>
 
