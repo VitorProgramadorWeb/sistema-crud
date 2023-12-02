@@ -13,7 +13,7 @@
 </head>
 <body onload="carregarTabela()">
     
-    <!-- Barra de navegação -->
+    <!-- Menu -->
     <nav>
         <ul class="menu">
             <li class="item-menu"><button onclick="showWindow()">Inserir</button></li>
@@ -25,95 +25,6 @@
 
     <!-- Popups -->
     <div id="popups"></div>
-
-    <div class="popup" style="display: none;">
-        <div class="bar" onmousedown="mousedown(event)" onmouseup="mouseup()">
-            <span id="nomelabel">[Nome]</span>
-            <button class="close-btn" onclick="closeWindow()">&times;</button>
-        </div>
-        <form class="formulario" action="inserir.php" method="post">
-
-            <div class="input_div">
-                <label for="nome">Nome</label>
-                <input type="text" name="nome" id="nome">
-            </div>
-            
-            <div class="input_div">
-                <label for="email">E-mail</label>
-                <input type="email" name="email" id="email">
-            </div>
-            
-            <div class="input_div">
-                <label for="nascimento">Data de nascimento</label>
-                <input type="date" name="nascimento" id="nascimento">
-            </div>
-            
-            <div class="input_div">
-                <label for="renda">Renda</label>
-                <input type="number" step="0.01" name="renda" id="renda" placeholder="R$">
-            </div>
-            
-            <div class="input_div">
-                <label for="cpf">CPF</label>
-                <input type="text" name="cpf" id="cpf" placeholder="___.___.___-__">
-            </div>
-            
-            <div class="input_div">
-                <label for="cnpj">CNPJ</label>
-                <input type="text" name="cnpj" id="cnpj" placeholder="__.___.___/____-__">
-            </div>
-            
-            <div class="input_div">
-                <label for="rua">Rua</label>
-                <input type="text" name="rua" id="rua">
-            </div>
-            
-            <div class="input_div">
-                <label for="numero">Nº</label>
-                <input type="number" name="numero" id="numero">
-            </div>
-            
-            <div class="input_div">
-                <label for="complemento">Complemento</label>
-                <input type="text" name="complemento" id="complemento">
-            </div>
-            
-            <div class="uf_cidade">
-                <div class="input_div">
-                    <label for="uf">UF</label>
-                    <select name="uf" id="uf">
-                        <option value="GO">GO</option>
-                    </select>
-                </div>
-                
-                <div class="input_div">
-                    <label for="cidade">Cidade</label>
-                    <select name="cidade" id="cidade">
-                        <option value="anapolis">Anápolis</option>
-                    </select>
-                </div>
-            </div>
-            
-            <div class="input_div">
-                <label for="cep">CEP</label>
-                <input type="text" name="cep" id="cep" placeholder="_____-___">
-            </div>
-            
-            <div class="input_div">
-                <label for="telefone_residencial">Telefone residencial</label>
-                <input type="tel" name="telefone_residencial" id="telefone_residencial" placeholder="(__)____-____">
-            </div>
-            
-            <div class="input_div">
-                <label for="telefone_celular">Telefone celular</label>
-                <input type="tel" name="telefone_celular" id="telefone_celular" placeholder="(__)_____-____">
-            </div>
-            
-            <div class="input_div" class="enviar-button">
-                <input class="salvar" type="submit" value="Salvar">
-            </div>
-        </form>
-    </div>
 
     <!-- Tabela -->
     <div class="tabela">
@@ -143,12 +54,8 @@
         </table>
     </div>
 
-    <div id="teste"></div>
-
     <!-- Rodapé -->
-    <footer>
-        Desenvolvido por: Vítor
-    </footer>
+    <footer>Desenvolvido por: Vítor</footer>
 
     <!-- JavaScript -->
     <script>
