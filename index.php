@@ -30,7 +30,11 @@
 
     <!-- Tabela -->
     <div id="tabela">
-        <img src="imagens/erro.png" alt="Não foi possível acessar o banco de dados" style="width: 80vmin;">
+
+        <!-- Imagem é substituída ao carregar o banco de dados -->
+        <abbr title="❌📂 Não foi possível carregar o banco de dados">
+            <img src="imagens/erro.png" alt="Erro" style="width: 80vmin;">
+        </abbr>
         <!--
         <table>
             <thead>
