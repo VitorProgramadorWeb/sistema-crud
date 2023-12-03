@@ -10,10 +10,8 @@
     <link rel="stylesheet" href="estilos/estilo.css" type="text/css">
     <link rel="stylesheet" href="estilos/tabela.css" type="text/css">
     <link rel="stylesheet" href="estilos/popup.css" type="text/css">
-    <script src="javascript/jquery-3.7.1.min.js"></script>
-    <script src="javascript/popupActions.js"></script>
-    <script src="javascript/addPopup.js"></script>
-    <script src="javascript/table.js"></script>
+    <script src="javascript/tabela.js"></script>
+    <script src="javascript/popup.js"></script>
 </head>
 
 <body onload="carregarTabela()">
