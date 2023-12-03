@@ -2,7 +2,7 @@
 //         Adicionar e Remover POPUP         //
 ///////////////////////////////////////////////
 
-function addPopup() {
+function addPopup(popupName = "", popupContent = none()) {
     // Container dos popups
     var popups = document.getElementById("popups");
 
@@ -20,16 +20,43 @@ function addPopup() {
     // Close button
     var closeButton = document.createElement("button");
     closeButton.setAttribute("class", "close-btn");
-    closeButton.setAttribute("onclick", "closeWindow()");
+    closeButton.setAttribute("onclick", "removePopup(this)");
     closeButton.innerHTML = "&times;";
 
     // Name bar
     var nameBar = document.createElement("span");
-    nameBar.innerText = "Exemplo";
+    nameBar.style.margin = "0px 10px";
+    nameBar.innerText = popupName;
     
+    /* ----- appends ----- */
     bar.append(nameBar);
     bar.append(closeButton);
 
+    popup.append(bar);
+    popup.append(popupContent);
+
+    popups.append(popup);
+}
+
+function removePopup(closeButton) {
+    // Popup > bar > closeButton
+    closeButton.parentElement.parentElement.remove();
+}
+
+
+
+
+
+
+
+
+
+
+///////////////////////////////////////////////
+//              Conteúdos POPUP              //
+///////////////////////////////////////////////
+
+function formulario() {
     /* ----------------------------- FORMULÁRIO ----------------------------- */
     // Form
     var form = document.createElement("form");
@@ -103,43 +130,45 @@ function addPopup() {
     form.append(campoTelefoneResidencial);
     form.append(campoTelefoneCelular);
     // form.append(botaoSalvar);
+
+    return form;
+
+
     
-
-
-    popup.append(bar);
-    popup.append(form);
-
-    popups.append(popup);
-    popupElement = document.getElementsByClassName("popup")[0]; // Para mover o popup com o mouse
+    function criarCampo(labelText, inputID, inputType) {
+        // Campo
+        var campo = document.createElement("div");
+        campo.setAttribute("class", "campo");
     
-}
-function criarCampo(labelText, inputID, inputType) {
-    // Campo
-    var campo = document.createElement("div");
-    campo.setAttribute("class", "campo");
-
-    // Label
-    var label = document.createElement("label");
-    label.setAttribute("for", inputID);
-    label.innerText = labelText;
-
-    // Input
-    var input = document.createElement("input");
-    input.setAttribute("type", inputType);
-    input.setAttribute("name", inputID);
-    input.setAttribute("id", inputID);
-    //input.setAttribute("placeholder", "");
-
-    campo.append(label);
-    campo.append(input);
-    return campo;
+        // Label
+        var label = document.createElement("label");
+        label.setAttribute("for", inputID);
+        label.innerText = labelText;
+    
+        // Input
+        var input = document.createElement("input");
+        input.setAttribute("type", inputType);
+        input.setAttribute("name", inputID);
+        input.setAttribute("id", inputID);
+        //input.setAttribute("placeholder", "");
+    
+        campo.append(label);
+        campo.append(input);
+        return campo;
+    }
 }
 
+function configuracoes() {
+    
+}
 
+function none() {
+    var none = document.createElement("div");
+    none.style.width = "200px";
+    none.style.height = "150px";
 
-
-
-
+    return none;
+}
 
 
 
@@ -157,10 +186,7 @@ var popupElement = document.getElementsByClassName("popup")[0];
 var xPopup;
 var yPopup;
 
-// POPUP window
-function showWindow() {
-    popupElement.style.display = "";
-}
+
 function closeWindow() {
     popupElement.style.display = "none";
     popupElement.style.top = "50%";

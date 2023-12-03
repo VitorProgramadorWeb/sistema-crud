@@ -22,6 +22,15 @@
             <li><button class="itemMenu" onclick="configuracoes()">Configurações</button></li>
         </ul>
     </nav>
+    <script>
+        function criarNovo() {
+            addPopup("Criar Novo", formulario());
+        }
+
+        function configuracoes() {
+            addPopup("Configurações");
+        }
+    </script>
 
     <!-- Popups -->
     <div id="popups"></div>
