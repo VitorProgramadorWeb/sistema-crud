@@ -9,18 +9,20 @@ function addPopup(popupName = "", popupContent = none()) {
     // Popup
     var popup = document.createElement("div");
     popup.setAttribute("class", "popup");
+    popup.setAttribute("onmousedown", "popupFocus(this)");
 
     /* ----------------------------- CABEÇALHO ----------------------------- */
     // Bar
     var bar = document.createElement("div");
     bar.setAttribute("class", "bar");
-    bar.setAttribute("onmousedown", "mousedown(event)");
-    bar.setAttribute("onmouseup", "mouseup()");
+    bar.setAttribute("onmousedown", "mouseDown(event, this)");
+    bar.setAttribute("onmouseup", "mouseUp()");
 
     // Close button
     var closeButton = document.createElement("button");
     closeButton.setAttribute("class", "close-btn");
-    closeButton.setAttribute("onclick", "removePopup(this)");
+    closeButton.setAttribute("onmousedown", "event.stopPropagation()");
+    closeButton.setAttribute("onclick", "removePopup(event, this)");
     closeButton.innerHTML = "&times;";
 
     // Name bar
@@ -38,7 +40,7 @@ function addPopup(popupName = "", popupContent = none()) {
     popups.append(popup);
 }
 
-function removePopup(closeButton) {
+function removePopup(e, closeButton) {
     // Popup > bar > closeButton
     closeButton.parentElement.parentElement.remove();
 }
@@ -158,7 +160,7 @@ function formulario() {
     }
 }
 
-function configuracoes() {
+function configuracao() {
     
 }
 
@@ -181,34 +183,36 @@ function none() {
 //////////////////////////////////////////////
 //            Outras ações POPUP            //
 //////////////////////////////////////////////
-
-var popupElement = document.getElementsByClassName("popup")[0];
+var lastPopup;
 var xPopup;
 var yPopup;
 
+// Mover popup [mouseDown -> movePopup -> mouseUp]
+function mouseDown(e, bar) {
+    // Elemento popup
+    var popup = bar.parentElement;
+    //var popup = document.createElement("div");
 
-function closeWindow() {
-    popupElement.style.display = "none";
-    popupElement.style.top = "50%";
-    popupElement.style.left = "50%";
-}
+    // Capturar os movimentos do mouse na página inteira
+    document.addEventListener("mousemove", movePopup);
+    lastPopup = popup;
 
-function mousedown(e) {
-    document.addEventListener("mousemove", move);
-
-    var popupLeft = window.getComputedStyle(popupElement).getPropertyValue("left");
-    var popupTop = window.getComputedStyle(popupElement).getPropertyValue("top");
+    var popupLeft = window.getComputedStyle(popup).getPropertyValue("left");
+    var popupTop = window.getComputedStyle(popup).getPropertyValue("top");
     
     xPopup = e.pageX - Number(popupLeft.substring(0, popupLeft.length-2));
-    
     yPopup = e.pageY - Number(popupTop.substring(0, popupTop.length-2));
 }
-function move(e) {
-    
-    popupElement.style.top = (e.pageY - yPopup) + "px";
-    popupElement.style.left = (e.pageX - xPopup) + "px";
-
+function movePopup(e) {
+    lastPopup.style.top = (e.pageY - yPopup) + "px";
+    lastPopup.style.left = (e.pageX - xPopup) + "px";
 }
-function mouseup() {
-    document.removeEventListener("mousemove", move);
+function mouseUp() {
+    document.removeEventListener("mousemove", movePopup);
+}
+
+
+// Colocar o popup na frente
+function popupFocus(popup) {
+    document.getElementById("popups").append(popup);
 }
