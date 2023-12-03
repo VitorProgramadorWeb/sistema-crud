@@ -70,7 +70,7 @@
     box-sizing: border-box;
 }
 
-/* Formulário */
+/* -------------- Formulário -------------- */
 .formulario {
     display: grid;
     grid-template-columns: 1fr 1fr;

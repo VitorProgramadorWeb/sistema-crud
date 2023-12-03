@@ -202,7 +202,9 @@ function none() {
 //////////////////////////////////////////////
 //            Outras ações POPUP            //
 //////////////////////////////////////////////
-var lastPopup;
+
+// Variáveis de comunicação
+var focusedPopup;
 var xPopup;
 var yPopup;
 
@@ -211,22 +213,25 @@ function mouseDown(e, bar) {
     // Elemento popup
     var popup = bar.parentElement;
 
-    // Focar no popup
+    // Focar no popup (Colocá-lo à frente)
     popupFocus(popup);
+    focusedPopup = popup;
 
     // Capturar os movimentos do mouse na página inteira
     document.addEventListener("mousemove", movePopup);
-    lastPopup = popup;
 
-    var popupLeft = window.getComputedStyle(popup).getPropertyValue("left");
-    var popupTop = window.getComputedStyle(popup).getPropertyValue("top");
+    // Pegando os valores css TOP e LEFT do popup
+    var topPopup = window.getComputedStyle(popup).getPropertyValue("top"); // "px"
+    var leftPopup = window.getComputedStyle(popup).getPropertyValue("left");
     
-    xPopup = e.pageX - Number(popupLeft.substring(0, popupLeft.length-2));
-    yPopup = e.pageY - Number(popupTop.substring(0, popupTop.length-2));
+    // Calculando a distância X e Y do canto superior esquerdo do popup até o mouse
+    yPopup = e.pageY - Number(topPopup.substring(0, topPopup.length-2)); // Ex: str("10px") -> num(10)
+    xPopup = e.pageX - Number(leftPopup.substring(0, leftPopup.length-2));
 }
 function movePopup(e) {
-    lastPopup.style.top = (e.pageY - yPopup) + "px";
-    lastPopup.style.left = (e.pageX - xPopup) + "px";
+    // Define css TOP e LEFT do popup com base no local que o mouse agarrou na Bar
+    focusedPopup.style.top = (e.pageY - yPopup) + "px";
+    focusedPopup.style.left = (e.pageX - xPopup) + "px";
 }
 function mouseUp() {
     document.removeEventListener("mousemove", movePopup);

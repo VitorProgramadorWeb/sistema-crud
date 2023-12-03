@@ -29,6 +29,7 @@ $resultado = $conn->query($sql);
 //    echo "</table>";
 //}
 
+// Enviando resultado como JSON
 echo json_encode($resultado->fetch_all());
 
 // Fecha a conexão com o banco de dados

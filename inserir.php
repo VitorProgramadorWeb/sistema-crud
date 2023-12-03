@@ -19,11 +19,12 @@ $telefone_celular     = $_POST['telefone_celular'];
 // Conexão com o banco de dados
 include 'conecta.php';
 
-// Inserção no banco de dados
+// SQL para inserção
 $sql = "INSERT INTO tblcliente(nome, email, nascimento, renda, cpf, cnpj, rua, numero, complemento, uf, cidade, cep, telefone_residencial, telefone_celular)
 VALUES('$nome', '$email', '$nascimento', '$renda', '$cpf', '$cnpj', '$rua', '$numero', '$complemento', '$uf', '$cidade', '$cep', '$telefone_residencial', '$telefone_celular');";
 
-if ($conn->query($sql)===true) {
+// Inserindo no banco de dados
+if ($conn->query($sql) === true) {
     echo "<br>Usuário $nome cadastrado com sucesso.";
 } else {
     echo "<br>Não foi possível cadastrar o usuário $nome. " . $conn->error;
@@ -31,4 +32,5 @@ if ($conn->query($sql)===true) {
 
 // Fechando a conexão com o banco de dados
 $conn->close();
+
 ?>
