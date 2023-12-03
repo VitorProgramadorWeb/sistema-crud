@@ -20,8 +20,8 @@
     <!-- Menu -->
     <nav>
         <ul class="menu">
-            <li class="item-menu"><button onclick="criarNovo()">Criar novo</button></li>
-            <li class="item-menu"><button onclick="configuracoes()">Configurações</button></li>
+            <li><button class="itemMenu" onclick="criarNovo()">Criar novo</button></li>
+            <li><button class="itemMenu" onclick="configuracoes()">Configurações</button></li>
         </ul>
     </nav>
 
@@ -30,6 +30,8 @@
 
     <!-- Tabela -->
     <div id="tabela">
+        <img src="imagens/erro.png" alt="Não foi possível acessar o banco de dados" style="width: 80vmin;">
+        <!--
         <table>
             <thead>
                 <tr>
@@ -48,12 +50,13 @@
                     <th>Telefone residencial</th>
                     <th>Telefone celular</th>
                     <th>CEP</th>
-                    <th></th> <!-- options -->
-                </tr>
+                    <th></th> //options
+                    </tr>
             </thead>
             <tbody id="tbody">
             </tbody>
         </table>
+        -->
     </div>
 
     <!-- Rodapé -->

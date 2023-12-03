@@ -4,13 +4,16 @@ body {
     font-family: monospace;
 }
 
+/* --------------- Menu --------------- */
 nav {
     background-color: black;
     color: white;
 
     position: fixed;
     top: 0;
+
     width: 100%;
+
     z-index: 1;
 }
 
@@ -24,33 +27,27 @@ nav {
     justify-content: space-between;
 }
 
-.item-menu button {
+.itemMenu {
     display: block;
+
     background-color: black;
     color: white;
+
+    padding: 2vmin;
 
     border: none;
     
     font-family: monospace;
     font-weight: bold;
     font-size: 3vmin;
-
-    padding: 2vmin;
 }
-
-
-.item-menu button:hover {
-    cursor: pointer;
+.itemMenu:hover {
     background-color: rgb(64, 64, 64);
+
+    cursor: pointer;
 }
 
-#tabela {
-    margin: 2vmin;
-    margin-top: 10vmin;
-
-    text-wrap: nowrap;
-}
-
+/* --------------- Rodapé --------------- */
 footer {
     position: fixed;
     bottom: 0;

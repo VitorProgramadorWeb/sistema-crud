@@ -1,3 +1,10 @@
+#tabela {
+    margin: 2vmin;
+    margin-top: 10vmin;
+
+    text-wrap: nowrap;
+}
+
 table, td, th {
     margin: 0;
     padding: 0;
