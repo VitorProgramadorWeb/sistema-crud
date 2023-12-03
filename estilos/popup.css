@@ -1,43 +1,44 @@
+/*******************************************************/
+/************************ POPUP ************************/
+/*******************************************************/
 .popup {
     position: fixed;
-    top: 50%;
-    left: 50%;
+    top: 10vmin;
+    left: 2vmin;
 
-    border: 1px solid rgb(64, 64, 64);
     background-color: white;
-    box-shadow: 5px 5px rgba(0, 0, 0, 0.5);
-    width: max-content;
+    border: 1px solid rgb(64, 64, 64);
+    box-shadow: 5px -5px rgba(0, 0, 0, 0.5);
 
-    transform: translate(-50%, -50%);
     z-index: 2;
 }
 
-
-
-
-
-
-
-/* Barra superior */
+/*---------------- Cabeçalho ----------------*/
+/* Bar */
 .bar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
+    
     background-color: rgb(64, 64, 64);
     color: white;
-
     border-bottom: 1px solid rgb(64, 64, 64);
 }
 
-.close-btn {
+/* Name bar */
+.nameBar {
+    margin: 0px 10px;
+
+    user-select: none;
+}
+
+/* Close button */
+.closeButton {
     background-color: rgb(64, 64, 64);
     color: white;
-
     border: 0;
 
     width: 37px;
-
     padding: 0;
 
     font-size: 2em;
@@ -45,30 +46,37 @@
     cursor: pointer;
     user-select: none;
 }
-
-.close-btn:hover {
+.closeButton:hover {
     background-color: red;
 }
 
-#nomelabel {
-    margin-left: 5%;
+
+
+
+
+
+
+
+/******************************************************/
+/******************* POPUP CONTENTS *******************/
+/******************************************************/
+.popupContent {
+    resize: both;
+    overflow: auto;
+
+    min-width: 100%;
+    min-height: 50px;
+
+    box-sizing: border-box;
 }
-
-
-
-
-
-
 
 /* Formulário */
 .formulario {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    padding: 10px;
     gap: 10px;
 
-    resize: both;
-    overflow: auto;
+    padding: 10px;
 }
 
 .formulario input, .formulario select {
@@ -97,9 +105,4 @@
 
 .formulario .salvar:hover {
     background-color: rgba(0, 0, 0, 0.5);
-}
-
-.popupContent {
-    resize: both;
-    overflow: auto;
 }

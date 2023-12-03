@@ -9,7 +9,16 @@ function addPopup(popupName = "", popupContent = none()) {
     // Popup
     var popup = document.createElement("div");
     popup.setAttribute("class", "popup");
-    popup.setAttribute("onmousedown", "popupFocus(this)");
+    popup.style.top = "150px";
+    popup.style.left = "100px";
+    // Para colocar um deslocamento do popup anterior
+    var lastPopup = popups.lastChild;
+    if (lastPopup != null) {
+        var topLastPopup = lastPopup.style.top;
+        var leftLastPopup = lastPopup.style.left;
+        popup.style.top = (Number(topLastPopup.substring(0, topLastPopup.length-2)) + 5) + "px";
+        popup.style.left = (Number(leftLastPopup.substring(0, leftLastPopup.length-2)) - 5) + "px";
+    }
 
     /* ----------------------------- CABEÇALHO ----------------------------- */
     // Bar
@@ -18,17 +27,17 @@ function addPopup(popupName = "", popupContent = none()) {
     bar.setAttribute("onmousedown", "mouseDown(event, this)");
     bar.setAttribute("onmouseup", "mouseUp()");
 
+    // Name bar
+    var nameBar = document.createElement("span");
+    nameBar.setAttribute("class", "nameBar");
+    nameBar.innerText = popupName;
+
     // Close button
     var closeButton = document.createElement("button");
-    closeButton.setAttribute("class", "close-btn");
+    closeButton.setAttribute("class", "closeButton");
     closeButton.setAttribute("onmousedown", "event.stopPropagation()");
     closeButton.setAttribute("onclick", "removePopup(this)");
     closeButton.innerHTML = "&times;";
-
-    // Name bar
-    var nameBar = document.createElement("span");
-    nameBar.style.margin = "0px 10px";
-    nameBar.innerText = popupName;
     
     /* ----- appends ----- */
     bar.append(nameBar);
@@ -69,7 +78,7 @@ function formulario() {
     /* ----------------------------- FORMULÁRIO ----------------------------- */
     // Form
     var form = document.createElement("form");
-    form.setAttribute("class", "formulario");
+    form.setAttribute("class", "popupContent formulario");
     form.setAttribute("action", "inserir.php");
     form.setAttribute("method", "post");
     
@@ -174,13 +183,13 @@ function configuracao() {
 function none() {
     var none = document.createElement("div");
     none.setAttribute("class", "popupContent");
-    none.setAttribute("onmousedown", "event.stopPropagation()");
-    none.setAttribute("onmouseup", "popupFocus(this)");
+    // size
     none.style.width = "200px";
     none.style.height = "150px";
 
     return none;
 }
+
 
 
 
@@ -201,7 +210,9 @@ var yPopup;
 function mouseDown(e, bar) {
     // Elemento popup
     var popup = bar.parentElement;
-    //var popup = document.createElement("div");
+
+    // Focar no popup
+    popupFocus(popup);
 
     // Capturar os movimentos do mouse na página inteira
     document.addEventListener("mousemove", movePopup);
