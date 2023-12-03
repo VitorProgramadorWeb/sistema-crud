@@ -98,3 +98,8 @@
 .formulario .salvar:hover {
     background-color: rgba(0, 0, 0, 0.5);
 }
+
+.popupContent {
+    resize: both;
+    overflow: auto;
+}

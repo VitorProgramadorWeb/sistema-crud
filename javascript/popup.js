@@ -22,7 +22,7 @@ function addPopup(popupName = "", popupContent = none()) {
     var closeButton = document.createElement("button");
     closeButton.setAttribute("class", "close-btn");
     closeButton.setAttribute("onmousedown", "event.stopPropagation()");
-    closeButton.setAttribute("onclick", "removePopup(event, this)");
+    closeButton.setAttribute("onclick", "removePopup(this)");
     closeButton.innerHTML = "&times;";
 
     // Name bar
@@ -40,9 +40,16 @@ function addPopup(popupName = "", popupContent = none()) {
     popups.append(popup);
 }
 
-function removePopup(e, closeButton) {
+function removePopup(element) {
     // Popup > bar > closeButton
-    closeButton.parentElement.parentElement.remove();
+    while(element.tagName != "BODY") {
+        if(element.className == "popup") {
+            element.remove();
+            return;
+        } else {
+            element = element.parentElement;
+        }
+    }
 }
 
 
@@ -166,6 +173,9 @@ function configuracao() {
 
 function none() {
     var none = document.createElement("div");
+    none.setAttribute("class", "popupContent");
+    none.setAttribute("onmousedown", "event.stopPropagation()");
+    none.setAttribute("onmouseup", "popupFocus(this)");
     none.style.width = "200px";
     none.style.height = "150px";
 
@@ -214,5 +224,12 @@ function mouseUp() {
 
 // Colocar o popup na frente
 function popupFocus(popup) {
-    document.getElementById("popups").append(popup);
+    while(popup.tagName != "BODY") {
+        if(popup.className == "popup") {
+            document.getElementById("popups").append(popup);
+            return;
+        } else {
+            popup = popup.parentElement;
+        }
+    }
 }
