@@ -30,7 +30,7 @@ $resultado = $conn->query($sql);
 //}
 
 // Enviando resultado como JSON
-echo json_encode($resultado->fetch_all());
+echo json_encode($resultado->fetch_all(MYSQLI_ASSOC));
 
 // Fecha a conexão com o banco de dados
 $conn->close();

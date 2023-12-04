@@ -17,7 +17,7 @@
 <body onload="carregarTabela()">
     <!-- Menu -->
     <nav>
-        <ul class="menu">
+        <ul id="menu">
             <li><button class="itemMenu" onclick="criarNovo()">Criar novo</button></li>
             <li><button class="itemMenu" onclick="configuracoes()">Configurações</button></li>
         </ul>
@@ -45,7 +45,7 @@
         </abbr>
         <!--
         <table>
-            <thead>
+            <thead id="thead">
                 <tr>
                     <th>Nome</th>
                     <th>E-mail</th>
