@@ -1,6 +1,14 @@
 function carregarTabela() {
+    // AJAX
     var xmlhttp = new XMLHttpRequest();
+
+    // Ao receber a resposta
     xmlhttp.onload = function() {
+
+        // Container da tabela
+        var containerTabela = document.getElementById("containerTabela");
+        containerTabela.innerHTML = "";
+
         var tabela = JSON.parse(this.response);
 
         // Inserirndo os elementos na tabela
@@ -37,6 +45,9 @@ function carregarTabela() {
         }
 
     };
+
+    // Enviando o pedido
     xmlhttp.open("GET", "consulta.php");
     xmlhttp.send();
 }
+

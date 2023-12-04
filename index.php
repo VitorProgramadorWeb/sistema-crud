@@ -37,7 +37,7 @@
     <div id="popups"></div>
 
     <!-- Tabela -->
-    <div id="tabela">
+    <div id="containerTabela">
 
         <!-- Imagem é substituída ao carregar o banco de dados -->
         <abbr title="❌📂 Não foi possível carregar o banco de dados">
