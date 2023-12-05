@@ -12,12 +12,8 @@ function carregarTabela() {
         var containerTabela = document.getElementById("containerTabela");
         containerTabela.innerHTML = ""; // Tira a imagem de erro
 
-        //
-        for (var i = 0; i<response.length; i++) {
-            containerTabela.append(Object.keys(response[i]));
-            containerTabela.append(document.createElement("br"));
-        }
-
+        // Adicionando tabela
+        containerTabela.append(criarTabela(response));
     };
 
     // Enviando o pedido
@@ -29,32 +25,46 @@ function criarTabela(dados) {
     // tabela
     var tabela = document.createElement("table");
 
-    // thead
+    ///////////////////////////////////////////////////
+    ////////////////////// thead //////////////////////
+    ///////////////////////////////////////////////////
     var thead = document.createElement("thead");
     thead.setAttribute("id", "thead");
-
     
-
-    // tbody
+    var tr = document.createElement("tr");
+    // Criando th's com base no nome das colunas do banco de dados
+    var primeiroCliente = dados[0];
+    for (var nomeColuna in primeiroCliente) {
+        var th = document.createElement("th");
+        th.innerText = nomeColuna;
+        
+        tr.append(th);
+    }
+    var th = document.createElement("th"); 
+    tr.append(th); // th das opções EDITAR e EXCLUIR
+    
+    thead.append(tr);
+    
+    ///////////////////////////////////////////////////
+    ////////////////////// tbody //////////////////////
+    ///////////////////////////////////////////////////
     var tbody = document.createElement("tbody");
     tbody.setAttribute("id", "tbody");
 
-    tabela.append(thead);
-    tabela.append(tbody);
+    // Inserindo os dados de cada cliente
+    for (var cliente in dados) {
+        var tr = document.createElement("tr");
+        
+        for (var dadoCliente in dados[cliente]) {
+            var td = document.createElement("td");
+            td.innerText = dados[cliente][dadoCliente];
 
-    return tabela;
-
-    // Inserirndo os elementos na tabela
-    for (var linha = 0; linha < response.length; linha++) {
-        var row = document.createElement("tr");
-        for (var data = 0; data < response[linha].length; data++) {
-            var dado = document.createElement("td");
-            
-            dado.innerText = response[linha][data];
-            row.append(dado);
+            tr.append(td);
         }
 
-        // Options
+        tbody.append(tr);
+
+        // Opções EDITAR e EXCLUIR
         var options = document.createElement("td");
         options.setAttribute("class", "options");
 
@@ -72,8 +82,11 @@ function criarTabela(dados) {
 
         options.append(buttonEdit);
         options.append(buttonDelete);
-        row.append(options);
-
-        document.getElementById("tbody").append(row);
+        tr.append(options);
     }
+
+    tabela.append(thead);
+    tabela.append(tbody);
+
+    return tabela;
 }

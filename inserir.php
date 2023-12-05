@@ -13,8 +13,8 @@ $complemento          = $_POST['complemento'];
 $uf                   = $_POST['uf'];
 $cidade               = $_POST['cidade'];
 $cep                  = $_POST['cep'];
-$telefone_residencial = $_POST['telefone_residencial'];
-$telefone_celular     = $_POST['telefone_celular'];
+$telefone_residencial = $_POST['telefoneResidencial'];
+$telefone_celular     = $_POST['telefoneCelular'];
 
 // Conexão com o banco de dados
 include 'conecta.php';

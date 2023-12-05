@@ -79,8 +79,8 @@ function formulario() {
     // Form
     var form = document.createElement("form");
     form.setAttribute("class", "popupContent formulario");
-    form.setAttribute("action", "inserir.php");
-    form.setAttribute("method", "post");
+    form.setAttribute("action", "javascript:void(0);");
+    form.setAttribute("onsubmit", "salvarFormulario(this);");
     
     // ----- Campos ----- //
     // Nome
@@ -115,8 +115,8 @@ function formulario() {
     var campoComplemento = criarCampo("Complemento", "complemento", "text");
 
     // UF e Cidade [Campos tipo SELECT (e dentros de outra div)]
-    // var campoUf = criarCampo();
-    // var campoCidade = criarCampo();
+    var campoUf = criarCampo("UF", "uf", "text");
+    var campoCidade = criarCampo("Cidade", "cidade", "text");
 
     // CEP
     var campoCep = criarCampo("CEP", "cep", "text");
@@ -131,7 +131,7 @@ function formulario() {
     // placeholder="(__)_____-____"
 
     // Botão: SALVAR
-    // var botaoSalvar = criarCampo();
+    var botaoSalvar = criarBotaoSubmit();
 
     form.append(campoNome);
     form.append(campoEmail);
@@ -142,12 +142,12 @@ function formulario() {
     form.append(campoRua);
     form.append(campoNumero);
     form.append(campoComplemento);
-    // form.append(campoUf);
-    // form.append(campoCidade);
+    form.append(campoUf);
+    form.append(campoCidade);
     form.append(campoCep);
     form.append(campoTelefoneResidencial);
     form.append(campoTelefoneCelular);
-    // form.append(botaoSalvar);
+    form.append(botaoSalvar);
 
     return form;
 
@@ -167,10 +167,26 @@ function formulario() {
         var input = document.createElement("input");
         input.setAttribute("type", inputType);
         input.setAttribute("name", inputID);
+        input.setAttribute("class", inputID);
         input.setAttribute("id", inputID);
         //input.setAttribute("placeholder", "");
     
         campo.append(label);
+        campo.append(input);
+        return campo;
+    }
+
+    function criarBotaoSubmit(buttonText) {
+        // Campo
+        var campo = document.createElement("div");
+        campo.setAttribute("class", "campo");
+    
+        // Input
+        var input = document.createElement("input");
+        input.setAttribute("class", "salvar");
+        input.setAttribute("value", "Salvar");
+        input.setAttribute("type", "submit");
+    
         campo.append(input);
         return campo;
     }
@@ -237,7 +253,6 @@ function mouseUp() {
     document.removeEventListener("mousemove", movePopup);
 }
 
-
 // Colocar o popup na frente
 function popupFocus(popup) {
     while(popup.tagName != "BODY") {
@@ -248,4 +263,45 @@ function popupFocus(popup) {
             popup = popup.parentElement;
         }
     }
+}
+
+// Salvar formulário
+function salvarFormulario(form) {
+
+    var dados = {
+        nome:                form.getElementsByClassName("nome")[0],
+        email:               form.getElementsByClassName("email")[0],
+        nascimento:          form.getElementsByClassName("nascimento")[0],
+        renda:               form.getElementsByClassName("renda")[0],
+        cpf:                 form.getElementsByClassName("cpf")[0],
+        cnpj:                form.getElementsByClassName("cnpj")[0],
+        rua:                 form.getElementsByClassName("rua")[0],
+        numero:              form.getElementsByClassName("numero")[0],
+        complemento:         form.getElementsByClassName("complemento")[0],
+        uf:                  form.getElementsByClassName("uf")[0],
+        cidade:              form.getElementsByClassName("cidade")[0],
+        cep:                 form.getElementsByClassName("cep")[0],
+        telefoneResidencial: form.getElementsByClassName("telefoneResidencial")[0],
+        telefoneCelular:     form.getElementsByClassName("telefoneCelular")[0]
+    };
+
+    var param = "?";
+    for (var dado in dados) {
+        param += dado+"="+dados[dado].value+"&";
+    }
+
+    alert(param);
+
+    // AJAX
+    var xmlhttp = new XMLHttpRequest();
+
+    // Ao receber a resposta
+    xmlhttp.onload = function() {
+        carregarTabela();
+        removePopup(form);
+    };
+
+    // Enviando o pedido
+    xmlhttp.open("GET", "inserir.php"+param);
+    xmlhttp.send();
 }

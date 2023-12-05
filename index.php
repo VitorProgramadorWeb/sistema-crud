@@ -38,7 +38,7 @@
 
     <!-- Tabela -->
     <div id="containerTabela">
-
+        <form action></form>
         <!-- Imagem é substituída ao carregar o banco de dados -->
         <abbr title="❌📂 Não foi possível carregar o banco de dados">
             <img src="imagens/erro.png" alt="Erro" style="width: 80vmin;">
@@ -63,7 +63,7 @@
                     <th>Telefone celular</th>
                     <th>CEP</th>
                     <th></th> //options
-                    </tr>
+                </tr>
             </thead>
             <tbody id="tbody">
             </tbody>
