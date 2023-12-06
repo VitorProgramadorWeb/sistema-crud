@@ -32,6 +32,7 @@ function criarTabela(dados) {
     thead.setAttribute("id", "thead");
     
     var tr = document.createElement("tr");
+    tr.setAttribute("class", "trSticky");
     // Criando th's com base no nome das colunas do banco de dados
     var primeiroCliente = dados[0];
     for (var nomeColuna in primeiroCliente) {

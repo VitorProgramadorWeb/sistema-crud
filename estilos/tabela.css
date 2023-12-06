@@ -1,8 +1,17 @@
 #containerTabela {
     margin: 2vmin;
-    margin-top: 10vmin;
+    box-sizing: border-box;
 
-    text-wrap: nowrap;
+    height: 85vh;
+
+    overflow: auto;
+}
+
+.trSticky {
+    box-sizing: border-box;
+    position: sticky;
+    top: 0;
+
 }
 
 table, td, th {
@@ -24,6 +33,7 @@ tr {
 }
 
 th {
+    box-sizing: border-box;
     background-color: rgb(64, 64, 64);
     color: white;
     text-align: left;

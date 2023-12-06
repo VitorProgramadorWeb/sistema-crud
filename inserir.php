@@ -1,20 +1,20 @@
 <?php
 
-//$id                 = $_POST['id'];
-$nome                 = $_POST['nome'];
-$email                = $_POST['email'];
-$nascimento           = $_POST['nascimento'];
-$renda                = $_POST['renda'];
-$cpf                  = $_POST['cpf'];
-$cnpj                 = $_POST['cnpj'];
-$rua                  = $_POST['rua'];
-$numero               = $_POST['numero'];
-$complemento          = $_POST['complemento'];
-$uf                   = $_POST['uf'];
-$cidade               = $_POST['cidade'];
-$cep                  = $_POST['cep'];
-$telefone_residencial = $_POST['telefoneResidencial'];
-$telefone_celular     = $_POST['telefoneCelular'];
+//$id                 = $_GET['id'];
+$nome                 = $_GET['nome'];
+$email                = $_GET['email'];
+$nascimento           = $_GET['nascimento'];
+$renda                = $_GET['renda'];
+$cpf                  = $_GET['cpf'];
+$cnpj                 = $_GET['cnpj'];
+$rua                  = $_GET['rua'];
+$numero               = $_GET['numero'];
+$complemento          = $_GET['complemento'];
+$uf                   = $_GET['uf'];
+$cidade               = $_GET['cidade'];
+$cep                  = $_GET['cep'];
+$telefone_residencial = $_GET['telefoneResidencial'];
+$telefone_celular     = $_GET['telefoneCelular'];
 
 // Conexão com o banco de dados
 include 'conecta.php';

@@ -80,7 +80,7 @@ function formulario() {
     var form = document.createElement("form");
     form.setAttribute("class", "popupContent formulario");
     form.setAttribute("action", "javascript:void(0);");
-    form.setAttribute("onsubmit", "salvarFormulario(this);");
+    form.setAttribute("onsubmit", "salvarFormulario(this);"); //event.preventDefault();
     
     // ----- Campos ----- //
     // Nome
@@ -289,8 +289,7 @@ function salvarFormulario(form) {
     for (var dado in dados) {
         param += dado+"="+dados[dado].value+"&";
     }
-
-    alert(param);
+    param = param.substring(0, param.length-1);
 
     // AJAX
     var xmlhttp = new XMLHttpRequest();

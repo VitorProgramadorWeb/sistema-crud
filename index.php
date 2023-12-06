@@ -38,37 +38,12 @@
 
     <!-- Tabela -->
     <div id="containerTabela">
-        <form action></form>
+        
         <!-- Imagem é substituída ao carregar o banco de dados -->
         <abbr title="❌📂 Não foi possível carregar o banco de dados">
             <img src="imagens/erro.png" alt="Erro" style="width: 80vmin;">
         </abbr>
-        <!--
-        <table>
-            <thead id="thead">
-                <tr>
-                    <th>Nome</th>
-                    <th>E-mail</th>
-                    <th>Nascimento</th>
-                    <th>Renda</th>
-                    <th>CPF</th>
-                    <th>CNPJ</th>
-                    <th>Rua</th>
-                    <th>Nº</th>
-                    <th>Complemento</th>
-                    <th>UF</th>
-                    <th>Cidade</th>
-                    <th>CEP</th>
-                    <th>Telefone residencial</th>
-                    <th>Telefone celular</th>
-                    <th>CEP</th>
-                    <th></th> //options
-                </tr>
-            </thead>
-            <tbody id="tbody">
-            </tbody>
-        </table>
-        -->
+
     </div>
 
     <!-- Rodapé -->
