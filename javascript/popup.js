@@ -47,6 +47,8 @@ function addPopup(popupName = "", popupContent = none()) {
     popup.append(popupContent);
 
     popups.append(popup);
+
+    return popup;
 }
 
 function removePopup(element) {
@@ -74,15 +76,18 @@ function removePopup(element) {
 //              Conteúdos POPUP              //
 ///////////////////////////////////////////////
 
-function formulario() {
+function formulario(action) {
     /* ----------------------------- FORMULÁRIO ----------------------------- */
     // Form
     var form = document.createElement("form");
     form.setAttribute("class", "popupContent formulario");
     form.setAttribute("action", "javascript:void(0);");
-    form.setAttribute("onsubmit", "salvarFormulario(this);"); //event.preventDefault();
+    form.setAttribute("onsubmit", "salvarFormulario(event, this, '"+action+"');"); //event.preventDefault();
     
     // ----- Campos ----- //
+    // ID
+    var campoId = criarCampo("ID", "id", "number");
+
     // Nome
     var campoNome = criarCampo("Nome", "nome", "text");
 
@@ -123,16 +128,17 @@ function formulario() {
     // placeholder="_____-___"
 
     // Telefone residencial
-    var campoTelefoneResidencial = criarCampo("Telefone residencial", "telefoneResidencial", "tel");
+    var campoTelefoneResidencial = criarCampo("Telefone residencial", "telefone_residencial", "tel");
     // placeholder="(__)____-____"
 
     // Telefone celular
-    var campoTelefoneCelular = criarCampo("Telefone celular", "telefoneCelular", "tel");
+    var campoTelefoneCelular = criarCampo("Telefone celular", "telefone_celular", "tel");
     // placeholder="(__)_____-____"
 
     // Botão: SALVAR
     var botaoSalvar = criarBotaoSubmit();
 
+    form.append(campoId);
     form.append(campoNome);
     form.append(campoEmail);
     form.append(campoNascimento);
@@ -266,30 +272,34 @@ function popupFocus(popup) {
 }
 
 // Salvar formulário
-function salvarFormulario(form) {
-
+function salvarFormulario(e, form, action) {
+    
+    // Dados do formulário
+    var dadosForm = e.currentTarget;
     var dados = {
-        nome:                form.getElementsByClassName("nome")[0],
-        email:               form.getElementsByClassName("email")[0],
-        nascimento:          form.getElementsByClassName("nascimento")[0],
-        renda:               form.getElementsByClassName("renda")[0],
-        cpf:                 form.getElementsByClassName("cpf")[0],
-        cnpj:                form.getElementsByClassName("cnpj")[0],
-        rua:                 form.getElementsByClassName("rua")[0],
-        numero:              form.getElementsByClassName("numero")[0],
-        complemento:         form.getElementsByClassName("complemento")[0],
-        uf:                  form.getElementsByClassName("uf")[0],
-        cidade:              form.getElementsByClassName("cidade")[0],
-        cep:                 form.getElementsByClassName("cep")[0],
-        telefoneResidencial: form.getElementsByClassName("telefoneResidencial")[0],
-        telefoneCelular:     form.getElementsByClassName("telefoneCelular")[0]
+        id:                   dadosForm.id.value,
+        nome:                 dadosForm.nome.value,
+        email:                dadosForm.email.value,
+        nascimento:           dadosForm.nascimento.value,
+        renda:                dadosForm.renda.value,
+        cpf:                  dadosForm.cpf.value,
+        cnpj:                 dadosForm.cnpj.value,
+        rua:                  dadosForm.rua.value,
+        numero:               dadosForm.numero.value,
+        complemento:          dadosForm.complemento.value,
+        uf:                   dadosForm.uf.value,
+        cidade:               dadosForm.cidade.value,
+        cep:                  dadosForm.cep.value,
+        telefone_Residencial: dadosForm.telefone_residencial.value,
+        telefone_Celular:     dadosForm.telefone_celular.value
     };
 
+    // Criando os parâmetros
     var param = "?";
     for (var dado in dados) {
-        param += dado+"="+dados[dado].value+"&";
+        param += dado+"="+dados[dado]+"&";
     }
-    param = param.substring(0, param.length-1);
+    param = param.substring(0, param.length-1); // - ...&
 
     // AJAX
     var xmlhttp = new XMLHttpRequest();
@@ -301,6 +311,6 @@ function salvarFormulario(form) {
     };
 
     // Enviando o pedido
-    xmlhttp.open("GET", "inserir.php"+param);
+    xmlhttp.open("GET", action+".php"+param);
     xmlhttp.send();
 }

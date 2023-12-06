@@ -1,3 +1,21 @@
+var colunas = [
+    "id",
+    "nome",               
+    "email",              
+    "nascimento",         
+    "renda",              
+    "cpf",                
+    "cnpj",               
+    "rua",                
+    "numero",             
+    "complemento",        
+    "uf",                 
+    "cidade",             
+    "cep",                
+    "telefone_residencial",
+    "telefone_celular"      
+];
+
 function carregarTabela() {
     // AJAX
     var xmlhttp = new XMLHttpRequest();
@@ -34,10 +52,9 @@ function criarTabela(dados) {
     var tr = document.createElement("tr");
     tr.setAttribute("class", "trSticky");
     // Criando th's com base no nome das colunas do banco de dados
-    var primeiroCliente = dados[0];
-    for (var nomeColuna in primeiroCliente) {
+    for (var i in colunas) {
         var th = document.createElement("th");
-        th.innerText = nomeColuna;
+        th.innerText = colunas[i];
         
         tr.append(th);
     }
@@ -57,10 +74,13 @@ function criarTabela(dados) {
         var tr = document.createElement("tr");
         
         for (var dadoCliente in dados[cliente]) {
-            var td = document.createElement("td");
-            td.innerText = dados[cliente][dadoCliente];
 
-            tr.append(td);
+            if (colunas.find(function(value){return value == dadoCliente})) {
+                var td = document.createElement("td");
+                td.innerText = dados[cliente][dadoCliente];
+    
+                tr.append(td);
+            }
         }
 
         tbody.append(tr);
@@ -70,12 +90,14 @@ function criarTabela(dados) {
         options.setAttribute("class", "options");
 
         var buttonEdit = document.createElement("button");
+        buttonEdit.setAttribute("onclick", "editar(this)");
         var imgEdit = document.createElement("img");
         imgEdit.setAttribute("src", "imagens/edit.png");
         imgEdit.setAttribute("alt", "editar");
         buttonEdit.append(imgEdit);
         
         var buttonDelete = document.createElement("button");
+        buttonDelete.setAttribute("onclick", "excluir(this)");
         var imgDelete = document.createElement("img");
         imgDelete.setAttribute("src", "imagens/delete.png");
         imgDelete.setAttribute("alt", "excluir");
@@ -90,4 +112,63 @@ function criarTabela(dados) {
     tabela.append(tbody);
 
     return tabela;
+}
+
+
+
+
+
+// EDITAR e EXCLUIR
+function editar(el) {
+
+    // Abrir o popup de editar
+    var popup = addPopup("Editar", formulario("editar"));
+
+    // Encontrando o TR
+    while(el.tagName != "TABLE") {
+        if(el.tagName == "TR") {
+
+            var tds = el.getElementsByTagName("td");
+
+            for (var coluna in colunas) {
+                var input = popup.querySelector("#"+colunas[coluna]);
+                input.setAttribute("value", tds[coluna].innerText);
+            }
+
+            return;
+        } else {
+            el = el.parentElement;
+        }
+    }
+}
+
+function excluir(el) {
+    // Encontrando o TR
+    while(el.tagName != "TABLE") {
+        if(el.tagName == "TR") {
+            var tds = el.getElementsByTagName("td");
+
+            var param = "?";
+            for (var coluna in colunas) {
+                param += colunas[coluna]+"="+tds[coluna].innerText+"&";
+            }
+            param = param.substring(0, param.length-1); // - ...&
+
+            // AJAX
+            var xmlhttp = new XMLHttpRequest();
+
+            // Ao receber a resposta
+            xmlhttp.onload = function() {
+                carregarTabela();
+            };
+
+            // Enviando o pedido
+            xmlhttp.open("GET", "excluir.php"+param);
+            xmlhttp.send();
+
+            return;
+        } else {
+            el = el.parentElement;
+        }
+    }
 }

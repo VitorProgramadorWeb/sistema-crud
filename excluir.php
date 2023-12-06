@@ -1,6 +1,6 @@
 <?php
 
-$id                 = $_GET['id'];
+$id                   = $_GET['id'];
 $nome                 = $_GET['nome'];
 $email                = $_GET['email'];
 $nascimento           = $_GET['nascimento'];
@@ -20,14 +20,13 @@ $telefone_celular     = $_GET['telefone_celular'];
 include 'conecta.php';
 
 // SQL para inserção
-$sql = "INSERT INTO tblcliente(nome, email, nascimento, renda, cpf, cnpj, rua, numero, complemento, uf, cidade, cep, telefone_residencial, telefone_celular)
-VALUES('$nome', '$email', '$nascimento', '$renda', '$cpf', '$cnpj', '$rua', '$numero', '$complemento', '$uf', '$cidade', '$cep', '$telefone_residencial', '$telefone_celular');";
+$sql = "DELETE FROM tblcliente WHERE id='$id'";
 
 // Inserindo no banco de dados
 if ($conn->query($sql) === true) {
-    echo "<br>Usuário $nome cadastrado com sucesso.";
+    echo "<br>Usuário $id excluido com sucesso.";
 } else {
-    echo "<br>Não foi possível cadastrar o usuário $nome. " . $conn->error;
+    echo "<br>Não foi possível excluir o usuário $id. " . $conn->error;
 }
 
 // Fechando a conexão com o banco de dados

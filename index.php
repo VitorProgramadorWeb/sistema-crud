@@ -25,7 +25,7 @@
         <!-- Script -->
         <script>
             function criarNovo() {
-                addPopup("Criar Novo", formulario());
+                addPopup("Criar Novo", formulario("inserir"));
             }
             function configuracoes() {
                 addPopup("Configurações");
