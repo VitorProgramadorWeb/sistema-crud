@@ -9,15 +9,15 @@ function addPopup(popupName = "", popupContent = none()) {
     // Popup
     var popup = document.createElement("div");
     popup.setAttribute("class", "popup");
-    popup.style.top = "150px";
-    popup.style.left = "100px";
+    popup.style.top = "50%";
+    popup.style.left = "50%";
     // Para colocar um deslocamento do popup anterior
     var lastPopup = popups.lastChild;
     if (lastPopup != null) {
         var topLastPopup = lastPopup.style.top;
         var leftLastPopup = lastPopup.style.left;
-        popup.style.top = (Number(topLastPopup.substring(0, topLastPopup.length-2)) + 5) + "px";
-        popup.style.left = (Number(leftLastPopup.substring(0, leftLastPopup.length-2)) - 5) + "px";
+        popup.style.top = (Number(topLastPopup.substring(0, topLastPopup.length-1)) + 5) + "%";
+        popup.style.left = (Number(leftLastPopup.substring(0, leftLastPopup.length-1)) - 5) + "%";
     }
 
     /* ----------------------------- CABEÇALHO ----------------------------- */

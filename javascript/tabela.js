@@ -35,7 +35,7 @@ function carregarTabela() {
     };
 
     // Enviando o pedido
-    xmlhttp.open("GET", "consulta.php");
+    xmlhttp.open("GET", "CRUD/read.php");
     xmlhttp.send();
 }
 
