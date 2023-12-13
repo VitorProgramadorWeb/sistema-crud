@@ -290,8 +290,8 @@ function salvarFormulario(e, form, action) {
         uf:                   dadosForm.uf.value,
         cidade:               dadosForm.cidade.value,
         cep:                  dadosForm.cep.value,
-        telefone_Residencial: dadosForm.telefone_residencial.value,
-        telefone_Celular:     dadosForm.telefone_celular.value
+        telefone_residencial: dadosForm.telefone_residencial.value,
+        telefone_celular:     dadosForm.telefone_celular.value
     };
 
     // Criando os parâmetros
@@ -306,8 +306,14 @@ function salvarFormulario(e, form, action) {
 
     // Ao receber a resposta
     xmlhttp.onload = function() {
-        carregarTabela();
-        removePopup(form);
+
+        if(this.response != "") {
+            alert(this.response); // ERRO
+        } else {
+            carregarTabela();
+            removePopup(form);
+        }
+        
     };
 
     // Enviando o pedido

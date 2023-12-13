@@ -21,16 +21,16 @@ $telefone_residencial = $_GET['telefone_residencial'];
 $telefone_celular     = $_GET['telefone_celular'];
 
 // Conexão com o banco de dados
-include 'conectar.php';
+include '../conectar.php';
 
 // SQL para inserção
 $sql = "DELETE FROM tblcliente WHERE id='$id'";
 
 // Inserindo no banco de dados
 if ($conn->query($sql) === true) {
-    echo "<br>Usuário $id excluido com sucesso.";
+    echo "Usuário excluido com sucesso.";
 } else {
-    echo "<br>Não foi possível excluir o usuário $id. " . $conn->error;
+    echo "Não foi possível excluir o usuário $id. " . $conn->error;
 }
 
 // Fechando a conexão com o banco de dados

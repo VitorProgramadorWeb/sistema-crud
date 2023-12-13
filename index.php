@@ -25,7 +25,7 @@
         <!-- Script -->
         <script>
             function criarNovo() {
-                addPopup("Criar Novo", formulario("inserir"));
+                addPopup("Criar Novo", formulario("CRUD/create"));
             }
             function configuracoes() {
                 addPopup("Configurações");
@@ -37,14 +37,7 @@
     <div id="popups"></div>
 
     <!-- Tabela -->
-    <div id="containerTabela">
-        
-        <!-- Imagem é substituída ao carregar o banco de dados -->
-        <abbr title="❌📂 Não foi possível carregar o banco de dados">
-            <img src="imagens/erro.png" alt="Erro" style="width: 80vmin;">
-        </abbr>
-
-    </div>
+    <div id="containerTabela"></div>
 
     <!-- Rodapé -->
     <footer>Desenvolvido por: Vítor</footer>

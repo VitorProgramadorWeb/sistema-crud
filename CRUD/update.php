@@ -21,7 +21,7 @@ $telefone_residencial = $_GET['telefone_residencial'];
 $telefone_celular     = $_GET['telefone_celular'];
 
 // Conexão com o banco de dados
-include 'conectar.php';
+include '../conectar.php';
 
 // SQL para inserção
 $sql = "UPDATE tblcliente 

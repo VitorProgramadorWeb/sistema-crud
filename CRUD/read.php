@@ -31,9 +31,10 @@ $resultado = $conn->query($sql);
 
 if($resultado !== false) {
     // Enviando resultado como JSON
+    header('Content-Type: application/json');
     echo json_encode($resultado->fetch_all(MYSQLI_ASSOC));
 } else {
-    echo "Falha ao LER o banco de dados.";
+    echo "Falha ao LER o banco de dados: " . $conn->error;
 }
 
 // Fecha a conexão com o banco de dados

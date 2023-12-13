@@ -6,7 +6,7 @@ $usuario      = "root";
 $senha        = "";
 
 // CONEXÃO
-$conn = new mysqli($servidor, $usuario, $senha, $bancodedados);
+@$conn = new mysqli($servidor, $usuario, $senha, $bancodedados);
 
 // verificando conexão
 if ($conn->connect_error) {

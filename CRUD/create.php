@@ -21,17 +21,15 @@ $telefone_residencial = $_GET['telefone_residencial'];
 $telefone_celular     = $_GET['telefone_celular'];
 
 // Conexão com o banco de dados
-include 'conectar.php';
+include '../conectar.php';
 
 // SQL para inserção
 $sql = "INSERT INTO tblcliente(nome, email, nascimento, renda, cpf, cnpj, rua, numero, complemento, uf, cidade, cep, telefone_residencial, telefone_celular)
 VALUES('$nome', '$email', '$nascimento', '$renda', '$cpf', '$cnpj', '$rua', '$numero', '$complemento', '$uf', '$cidade', '$cep', '$telefone_residencial', '$telefone_celular');";
 
 // Inserindo no banco de dados
-if ($conn->query($sql) === true) {
-    echo "<br>Usuário $nome cadastrado com sucesso.";
-} else {
-    echo "<br>Não foi possível cadastrar o usuário $nome. " . $conn->error;
+if ($conn->query($sql) !== true) {
+    echo "Falha ao CRIAR cliente: " . $conn->error;
 }
 
 // Fechando a conexão com o banco de dados

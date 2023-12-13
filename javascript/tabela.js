@@ -23,15 +23,21 @@ function carregarTabela() {
     // Ao receber a resposta
     xmlhttp.onload = function() {
 
-        // Pegando a resposta JSON
-        var response = JSON.parse(this.response);
-        
         // Container da tabela
         var containerTabela = document.getElementById("containerTabela");
-        containerTabela.innerHTML = ""; // Tira a imagem de erro
 
-        // Adicionando tabela
-        containerTabela.append(criarTabela(response));
+        // Pegando a resposta JSON
+        if(this.getResponseHeader('Content-Type') == "application/json") {
+            
+            var response = JSON.parse(this.response);
+            
+            // Adicionando tabela
+            containerTabela.replaceChildren(criarTabela(response));
+
+        } else {
+            alert(this.response);
+            containerTabela.innerHTML = '<img src="imagens/erro.png" alt="Erro" style="width: 80vmin;" title="❌📂 Não foi possível carregar o banco de dados">';
+        }
     };
 
     // Enviando o pedido
@@ -163,7 +169,7 @@ function excluir(el) {
             };
 
             // Enviando o pedido
-            xmlhttp.open("GET", "excluir.php"+param);
+            xmlhttp.open("GET", "CRUD/delete.php"+param);
             xmlhttp.send();
 
             return;
